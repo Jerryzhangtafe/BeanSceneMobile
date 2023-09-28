@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ff9ee4d8-9ea6-4f35-a1e8-b80dc3c8bf8d"
+      }
+    },
+    "owner": "zhanglijinze"
   }
 }

@@ -22,19 +22,19 @@ const BottomTabs = createBottomTabNavigator();
 export default function BottomTabNavigatorManager (){
     return(
 <BottomTabs.Navigator screenOptions={ScreenOptionStyle}>
-<BottomTabs.Screen name="Menu" component={MenuNavigator} options={{title:"Menu",tabBarIcon:({focused})=>(
+<BottomTabs.Screen name="Menu" component={MenuNavigator} options={{title:"Menu",unmountOnBlur:true,tabBarIcon:({focused})=>(
     <TabBarIcon focused={focused} name="silverware-variant"/>
 )}} />
-<BottomTabs.Screen name="Staff" component={StaffNavigator}  options={{title:"Staff",tabBarIcon:({focused})=>(
+<BottomTabs.Screen name="Staff" component={StaffNavigator}  options={{title:"Staff",unmountOnBlur:true,tabBarIcon:({focused})=>(
     <TabBarIcon focused={focused} name="account-circle"/>
 )}}  />
-<BottomTabs.Screen name="Order" component={OrderNavigator}  options={{title:"Order",tabBarIcon:({focused})=>(
+<BottomTabs.Screen name="Order" component={OrderNavigator}  options={{title:"Order",unmountOnBlur:true,tabBarIcon:({focused})=>(
     <TabBarIcon focused={focused} name="cart"/>
 )}} />
-<BottomTabs.Screen name="Report" component={Report}  options={{title:"Report",tabBarIcon:({focused})=>(
+<BottomTabs.Screen name="Report" component={Report}  options={{title:"Report",unmountOnBlur:true,tabBarIcon:({focused})=>(
     <TabBarIcon focused={focused} name="format-list-bulleted"/>
 )}} />
-<BottomTabs.Screen name="Search" component={SearchNavigator}  options={{title:"Search",tabBarIcon:({focused})=>(
+<BottomTabs.Screen name="Search" component={SearchNavigator}  options={{title:"Search",unmountOnBlur:true,tabBarIcon:({focused})=>(
     <TabBarIcon focused={focused} name="magnify"/>
 )}} />
 </BottomTabs.Navigator>)

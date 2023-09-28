@@ -33,7 +33,8 @@ export default function Login({navigation}) {
             setError("please enter password")
         }
         else {
-            var url = `https://localhost:7044/Staff/${username}/${password}`;
+            var url = `https://192.168.0.129:7044/Staff/${username}/${password}`;
+            // var url = `https://localhost:7044/Staff/${username}/${password}`;
             var header = new Headers({});
             header.append("Content-Type", "application/json")
             var options = {
@@ -62,11 +63,10 @@ export default function Login({navigation}) {
                         navigation.navigate("BottomTabNavigatorStaff")
                     }
                     // navigation.navigate("MenuList");
-                }
-
+                }else {throw new Error("username and password does not exist")}
             } catch (error) {
                 console.log("username and password does not exist");
-                setError("Username and password does not exist");
+                setError(error.message);
             }
         }
 
@@ -78,7 +78,7 @@ export default function Login({navigation}) {
     //   <StatusBar style="auto" />
     // </View>
     <SafeAreaView style={styles.safeAreaView}>
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView  contentContainerStyle={styles.container}>
         <View style={styles.container}>
             <View style={styles.logoContainer}>
                 <Image source={require("../assets/images/logo/png/logo-primary-transparent.png")} style={styles.logo}></Image>

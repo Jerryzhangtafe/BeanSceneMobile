@@ -45,6 +45,7 @@ export default function MenuList({ props, navigation }) {
     const getMenu = async () => {
 
 
+        // var url = 'https://192.168.0.129:7044/MenuItems';
         var url = 'https://localhost:7044/MenuItems';
         var header = new Headers({});
         var options = {
@@ -90,7 +91,8 @@ console.log(ItemsByCategory);
     const deleteConfirmed = async()=>{
         console.log("delete button is clicked")
 
-        var url = `https://localhost:7044/products/${selectedItem._id}`;
+        // var url = `https://192.168.0.129:7044/MenuItems/${selectedItem._id}`;
+        var url = `https://localhost:7044/MenuItems/${selectedItem._id}`;
         var header = new Headers({});
         header.append("Content-Type","application/json")
         
@@ -108,7 +110,7 @@ if(response.ok){
 }
 
         }catch(error){
-
+            console.log("Error:" + error.message);
         }
     }
 
@@ -119,7 +121,7 @@ if(response.ok){
             <ScrollView contentContainerStyle={styles.container}>
                 <View style={styles.container}>
                     <Header/>
-                    <CategoryBar navigation={navigation} categorySelected={categorySelected} setCategorySelected={setCategorySelected} />
+                    <CategoryBar navigation={navigation} categorySelected={categorySelected} setCategorySelected={setCategorySelected} managerView={true} />
                     <View style={styles.pageTitleContainer}>
                         <Text style={styles.titleText}>Menu List</Text>
                         <TouchableOpacity onPress={() => navigation.navigate("AddMenu")}>
@@ -132,7 +134,7 @@ if(response.ok){
                     <FlatList data={categorySelected?ItemsByCategory:menuData} renderItem={({ item,index }) => (
 
                         <View style={(index%2===0)?styles.itemListContainer:styles.itemListContainerGrey}>
-                            <Text style={styles.fontBold}>{item.name}</Text>
+                            <Text style={styles.fontBold} numberOfLines={1}>{item.name}</Text>
                             <View style={styles.rowHorizotal} >
                                 <TouchableOpacity onPress={() => navigation.navigate("EditMenu", { item })}>
                                     <AntDesign name="edit" size={18} color={Colours.BeanLightBlue}></AntDesign>
@@ -152,10 +154,10 @@ if(response.ok){
                                 <Text style={styles.modalText}>Are you sure you want to delete this {selectedItem?.name}?</Text>
                                 <View style={styles.modalButtons}>
                                     <TouchableOpacity style={styles.modalButton} onPress={hideDeleteModal}>
-                                        <Text style={styles.whiteText}>Cancel</Text>
+                                        <Text style={styles.darkText}>Cancel</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={[styles.modalButton, styles.deleteModalButton]} onPress={deleteConfirmed}>
-                                        <Text style={styles.whiteText}>Delete</Text>
+                                        <Text style={styles.darkText}>Delete</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>

@@ -65,7 +65,7 @@ loginButtonText: {
     paddingBottom: 5
 },
 
-orangeButtonText2: {
+GoldButtonText: {
     color: "white",
     fontSize: 16,
     padding: 5
@@ -94,6 +94,23 @@ categoryContainer: {
   backgroundColor: Colours.BeanPaleGold,
   justifyContent: "space-between"
 },
+// diatary container
+dietaryContainer: {
+  width:wp("80%"),
+  flexWrap:"wrap",
+flexDirection: "row",
+alignItems: "center",
+gap: 20,
+marginBottom: 10,
+},
+dietaryBox:{
+  flexDirection: "row",
+  alignItems: "center",
+  gap:5
+},
+checkBox:{
+  Margin:8
+},
 
 categoryTab:{
   borderRadius:10,
@@ -119,8 +136,10 @@ darkText: {
   fontWeight: "500"
 },
 
-orangeContainer: {
-  backgroundColor: "#e74c3c"
+goldContainer: {
+  backgroundColor: Colours.BeanGold,
+  padding: 5.5,
+  borderRadius:5
 },
 pageTitleContainer: {
   flexDirection: "row",
@@ -140,7 +159,10 @@ itemListContainer: {
   padding: 10,
   justifyContent: "space-between",
   borderBottomWidth: 1,
-  borderBottomColor: Colours.BeanDarkBlue
+  borderBottomColor: Colours.BeanDarkBlue,
+  // flexWrap:"wrap",
+
+
 },
 
 itemListContainerGrey: {
@@ -149,11 +171,16 @@ itemListContainerGrey: {
   justifyContent: "space-between",
   borderBottomWidth: 1,
   borderBottomColor: Colours.BeanDarkBlue,
-  backgroundColor:Colours.BeanLightGrey
+  backgroundColor:Colours.BeanLightGrey,
+  // flexWrap:"wrap",
 },
 
 rowHorizotal: {
-  flexDirection: "row"
+  flexDirection: "row",
+  gap:10,
+  marginHorizontal:10,
+  justifyContent: "center",
+  alignItems: "center",
 },
 
 fontBold: {
@@ -163,17 +190,21 @@ fontBold: {
 actualFormContainerWithSpacing: {
   marginTop: 20,
   alignItems: "center",
-  flex: 1
+  flex: 1,
 },
-blackMessage: {
+blueMessage: {
   fontSize: 20,
-  color: "black",
+  color: Colours.BeanLightBlue,
   fontWeight: "bold",
   marginTop: 20
 },
 alignCenter: {
   alignItems: "center",
-  justifyContent: "center"
+  width:wp("80%")
+},
+alignCenterSearch:{
+marginTop: 20,
+alignSelf: "center",
 },
 modalContainer: {
   flex: 1,
@@ -193,13 +224,14 @@ modalButtons: {
   flexDirection: "row"
 },
 modalButton: {
-  backgroundColor: "black",
+  backgroundColor: Colours.BeanLightBlue,
   padding: 10,
   marginRight: 10,
-  marginTop: 10
+  marginTop: 10,
+  borderRadius:5
 },
 deleteModalButton: {
-  backgroundColor: "#e74c3c"
+  backgroundColor: Colours.BeanGold
 },
 //test
 //screen option styles
