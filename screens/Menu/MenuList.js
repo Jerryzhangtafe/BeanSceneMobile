@@ -20,12 +20,15 @@ import Header from "../../layout/Header"
 
 import styles from "../../styles/MainStyle"
 
+import { BeanSceneGetMenuItems } from "../../utils/Api";
+
 import { Ionicons, AntDesign } from "@expo/vector-icons"
 
 import Colours from "../../constants/Colours";
 
 import { useIsFocused } from "@react-navigation/native";
 import CategoryBar from "../../layout/CategoryBar";
+import Url from "../../constants/Url";
 
 export default function MenuList({ props, navigation }) {
     const [menuData, setMenuData] = useState([]);
@@ -44,21 +47,19 @@ export default function MenuList({ props, navigation }) {
 
     const getMenu = async () => {
 
-
-        // var url = 'https://192.168.0.129:7044/MenuItems';
-        var url = 'https://localhost:7044/MenuItems';
+        var url = `${Url.url}/MenuItems`;
         var header = new Headers({});
         var options = {
             method: "GET",
             headers: header
         }
         try {
-
             const response = await fetch(url, options);
-            console.log(response);
+            // console.log(response);
             //I added await 
             const data = await response.json();
-            console.log(data);
+            
+            // console.log(data);
             setMenuData(data)
 
         }
@@ -68,6 +69,7 @@ export default function MenuList({ props, navigation }) {
         }
 
     }
+
 
 const ItemsByCategory = menuData.filter((item)=>item.categoryId===categorySelected);
 
@@ -91,8 +93,8 @@ console.log(ItemsByCategory);
     const deleteConfirmed = async()=>{
         console.log("delete button is clicked")
 
-        // var url = `https://192.168.0.129:7044/MenuItems/${selectedItem._id}`;
-        var url = `https://localhost:7044/MenuItems/${selectedItem._id}`;
+       
+        var url = `${Url.url}/MenuItems/${selectedItem._id}`;
         var header = new Headers({});
         header.append("Content-Type","application/json")
         
@@ -118,25 +120,27 @@ if(response.ok){
 
     return (
         <SafeAreaView style={styles.safeAreaView}>
-            <ScrollView contentContainerStyle={styles.container}>
+              
                 <View style={styles.container}>
                     <Header/>
                     <CategoryBar navigation={navigation} categorySelected={categorySelected} setCategorySelected={setCategorySelected} managerView={true} />
+                   
                     <View style={styles.pageTitleContainer}>
                         <Text style={styles.titleText}>Menu List</Text>
                         <TouchableOpacity onPress={() => navigation.navigate("AddMenu")}>
                             <Ionicons name={"ios-add-circle"} size={30} color={Colours.BeanLightBlue} />
                         </TouchableOpacity>
                     </View>
-
+                    {/* <ScrollView contentContainerStyle={styles.container}> */}
 
                     
                     <FlatList data={categorySelected?ItemsByCategory:menuData} renderItem={({ item,index }) => (
-
+                
                         <View style={(index%2===0)?styles.itemListContainer:styles.itemListContainerGrey}>
                             <Text style={styles.fontBold} numberOfLines={1}>{item.name}</Text>
                             <View style={styles.rowHorizotal} >
-                                <TouchableOpacity onPress={() => navigation.navigate("EditMenu", { item })}>
+                                {/* <TouchableOpacity onPress={() => navigation.navigate("EditMenu", { item })}> */}
+                                <TouchableOpacity onPress={() => navigation.navigate("Central",{screen:"EditMenu",params:{item}})}>
                                     <AntDesign name="edit" size={18} color={Colours.BeanLightBlue}></AntDesign>
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => showDeleteModal(item)}>
@@ -144,9 +148,8 @@ if(response.ok){
                                 </TouchableOpacity>
                             </View>
                         </View>
-                    )}>
-
-                    </FlatList>
+                    )}> 
+                    </FlatList> 
 
                     <Modal visible ={modalVisibility} transparent>
                         <View style={styles.modalContainer}>
@@ -163,10 +166,10 @@ if(response.ok){
                             </View>
                         </View>
                     </Modal>
-
+                {/* </ScrollView> */}
 
                 </View>
-            </ScrollView>
+            
         </SafeAreaView>
     )
 }

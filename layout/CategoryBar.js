@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useIsFocused } from "@react-navigation/native";
 
 import Colours from "../constants/Colours";
+import Url from "../constants/Url";
 
 export default function CategoryBar({
   setCategorySelected,
@@ -22,7 +23,8 @@ export default function CategoryBar({
   const getCategories = async () => {
     console.log("getCategories method is called");
 
-    var url = "https://localhost:7044/Categories";
+   
+    var url = `${Url.url}/Categories`;
     var header = new Headers({});
     var options = {
       method: "GET",
@@ -30,10 +32,10 @@ export default function CategoryBar({
     };
     try {
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       //I added await
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setCategoryData(data);
       // console.log(data[0]);
       // setCategory(data[0].name);

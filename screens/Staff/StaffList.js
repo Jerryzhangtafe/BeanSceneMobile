@@ -25,6 +25,7 @@ import { Ionicons, AntDesign } from "@expo/vector-icons"
 
 import { useIsFocused } from "@react-navigation/native";
 import Colours from "../../constants/Colours";
+import Url from "../../constants/Url";
 
 export default function StaffList({ props, navigation }) {
     const [staffData, setStaffData] = useState([]);
@@ -42,7 +43,7 @@ export default function StaffList({ props, navigation }) {
     const getStaff = async () => {
 
 
-        var url = 'https://localhost:7044/Staff';
+        var url = `${Url.url}/Staff`;
         var header = new Headers({});
         var options = {
             method: "GET",
@@ -51,10 +52,10 @@ export default function StaffList({ props, navigation }) {
         try {
 
             const response = await fetch(url, options);
-            console.log(response);
+            // console.log(response);
             //I added await 
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             setStaffData(data)
 
         }
@@ -79,7 +80,7 @@ export default function StaffList({ props, navigation }) {
     const deleteConfirmed = async()=>{
         console.log("delete button is clicked")
 
-        var url = `https://localhost:7044/staff/${selectedStaff._id}`;
+        var url = `${Url.url}/staff/${selectedStaff._id}`;
         var header = new Headers({});
         header.append("Content-Type","application/json")
         
@@ -105,7 +106,7 @@ if(response.ok){
 
     return (
         <SafeAreaView style={styles.safeAreaView}>
-            <ScrollView contentContainerStyle={styles.container}>
+            {/* <ScrollView contentContainerStyle={styles.container}> */}
                 <View style={styles.container}>
                     <Header></Header>
                     <View style={styles.pageTitleContainer}>
@@ -152,7 +153,7 @@ if(response.ok){
 
 
                 </View>
-            </ScrollView>
+            {/* </ScrollView> */}
         </SafeAreaView>
     )
 }

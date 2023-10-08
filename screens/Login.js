@@ -4,6 +4,10 @@ import { useState } from 'react';
 import styles from '../styles/MainStyle';
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { BeanSceneGetIdentity } from '../utils/Api';
+import Url from '../constants/Url';
+
+    // "orientation": "portrait",
 
 export default function Login({navigation}) {
 
@@ -33,8 +37,9 @@ export default function Login({navigation}) {
             setError("please enter password")
         }
         else {
-            var url = `https://192.168.0.129:7044/Staff/${username}/${password}`;
-            // var url = `https://localhost:7044/Staff/${username}/${password}`;
+            
+            var url = `${Url.url}/Staff/${username}/${password}`;
+           
             var header = new Headers({});
             header.append("Content-Type", "application/json")
             var options = {
@@ -43,10 +48,12 @@ export default function Login({navigation}) {
                 // body:JSON.stringify(product)
             }
             try {
+                
                 const response = await fetch(url, options);
-                console.log(response);
-
+                // console.log(response);
+                
                 if (response.ok) {
+                    
                     const data = await response.json();
                     console.log(data)
 

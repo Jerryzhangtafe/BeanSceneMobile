@@ -18,10 +18,11 @@ import ScreenOptionStyle from "./ScreenOptionStyle";
 
 const Stack = createStackNavigator();
 const BottomTabs = createBottomTabNavigator();
+const INITIAL_ROUTE_NAME = "Menu";
 
 export default function BottomTabNavigatorManager (){
     return(
-<BottomTabs.Navigator screenOptions={ScreenOptionStyle}>
+<BottomTabs.Navigator initialRouteName={INITIAL_ROUTE_NAME} screenOptions={ScreenOptionStyle}>
 <BottomTabs.Screen name="Menu" component={MenuNavigator} options={{title:"Menu",unmountOnBlur:true,tabBarIcon:({focused})=>(
     <TabBarIcon focused={focused} name="silverware-variant"/>
 )}} />

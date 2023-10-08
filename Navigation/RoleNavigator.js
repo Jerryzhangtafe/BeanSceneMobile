@@ -13,7 +13,7 @@ const Stack = createStackNavigator();
 export default function RoleNavigator() {
   return (
     <Stack.Navigator screenOptions={ScreenOptionStyle}>
-      <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
+      <Stack.Screen name="Login" component={Login} options={{ headerShown: false}}/>
       <Stack.Screen name="BottomTabNavigatorManager" component={BottomTabNavigatorManager} options={{ headerShown: false }}/>
       <Stack.Screen name="BottomTabNavigatorStaff" component={BottomTabNavigatorStaff} options={{ headerShown: false }}/>
     </Stack.Navigator>

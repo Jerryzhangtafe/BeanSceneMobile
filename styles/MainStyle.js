@@ -1,14 +1,17 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet,Platform,StatusBar} from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 import Colours from "../constants/Colours";
 
 
+
 export default StyleSheet.create({
-    safeAreaView:{flex:1},
+    safeAreaView:{flex:1,
+      // backgroundColor: Colours.BeanLightGrey,
+      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,},
     container: {
       flex: 1,
-      width: wp("100%"),
-      height: hp("100%"),      
+      // width: wp("100%"),
+      // height: hp("100%"),      
     },
 
     //Logo in 
@@ -160,7 +163,7 @@ itemListContainer: {
   justifyContent: "space-between",
   borderBottomWidth: 1,
   borderBottomColor: Colours.BeanDarkBlue,
-  // flexWrap:"wrap",
+  flexWrap:"wrap",
 
 
 },
@@ -172,13 +175,13 @@ itemListContainerGrey: {
   borderBottomWidth: 1,
   borderBottomColor: Colours.BeanDarkBlue,
   backgroundColor:Colours.BeanLightGrey,
-  // flexWrap:"wrap",
+  flexWrap:"wrap",
 },
 
 rowHorizotal: {
   flexDirection: "row",
   gap:10,
-  marginHorizontal:10,
+  paddingHorizontal:15,
   justifyContent: "center",
   alignItems: "center",
 },
@@ -255,6 +258,57 @@ SearchResult:{
   borderBottomWidth:1,
   borderBottomColor:"white"
 
+},
+orderListRow:{
+  // backgroundColor:"#f2f2f2",
+  borderBottomColor:Colours.BeanDarkBlue,
+  borderBottomWidth:1,
+  padding:15,
+  justifyContent:'space-between'
+
+},
+fontBoldSmall:{
+  fontWeight:"bold",
+  fontSize:16
+},
+
+minusContainer:{
+  backgroundColor: Colours.BeanLightBlue,
+  // width:30,
+  // borderTopLeftRadius:5,
+  // borderBottomLeftRadius:5,
+  borderRadius:35,
+  alignItems:"center",
+  justifyContent:"center"
+
+},
+
+// plusContainer:{
+//   backgroundColor: Colours.BeanLightBlue,
+//   width:30,
+//   borderTopRightRadius:5,
+//   borderBottomRightRadius:5,
+//   borderRadius:"100%",
+//   alignItems:"center",
+//   justifyContent:"center"
+// },
+
+itemQuantity:{
+  fontSize:16,
+  paddingLeft:5,
+  paddingRight:5
+},
+
+orderListLeftColumn:{
+  // width:wp("65%"),
+  flex:3
+},
+
+orderListRightColumn:{
+// width:wp("20%"),
+flex:1,
+alignItems:"center",
+justifyContent:"center", 
 }
   });
   

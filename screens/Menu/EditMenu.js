@@ -15,6 +15,7 @@
 
 
 import React, { useEffect, useState } from "react";
+import { Platform } from 'react-native';
 import {
   View,
   Text,
@@ -22,14 +23,15 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
-  Picker,
+  // Picker,
 } from "react-native";
-
+import { Picker } from "@react-native-picker/picker";
 import CheckBox from "expo-checkbox";
 
 import Header from "../../layout/Header";
 import styles from "../../styles/MainStyle";
 import Colours from "../../constants/Colours";
+import Url from "../../constants/Url";
 
 
 export default function EditMenu({ route, navigation }) {
@@ -70,7 +72,7 @@ const menuItem = route.params.item;
   const getCategories = async () => {
     console.log("getCategories method is called");
 
-    var url = "https://localhost:7044/categories";
+    var url = `${Url.url}/categories`;
     var header = new Headers({});
     var options = {
       method: "GET",
@@ -78,10 +80,10 @@ const menuItem = route.params.item;
     };
     try {
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       //I added await
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setCategoryData(data);
       // console.log(data[0]);
       // setCategoryName(data[0].name);
@@ -131,7 +133,7 @@ const menuItem = route.params.item;
   
     };
 console.log(menuItem);
-    var url = "https://localhost:7044/menuitems";
+    var url = `${Url.url}/menuitems`;
     var header = new Headers({});
     header.append("Content-Type", "application/json");
     var options = {
@@ -153,7 +155,7 @@ console.log(menuItem);
         return
       } 
       const response = fetch(url, options);
-      console.log(response);
+      // console.log(response);
       setMessages("Menu Edited Successfully");
     } catch (error) {
       console.log("Error:" + error.message);
@@ -161,7 +163,7 @@ console.log(menuItem);
   };
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <ScrollView contentContainerStyle={styles.container}>
+     
         <View style={styles.container}>
           <Header></Header>
           <View style={styles.pageTitleContainer}>
@@ -169,10 +171,13 @@ console.log(menuItem);
             <TouchableOpacity
               style={styles.goldContainer}
               onPress={() => navigation.goBack()}
+              // onPress={() => navigation.navigate("MenuList")}
             >
               <Text style={styles.darkText}>Back</Text>
             </TouchableOpacity>
           </View>
+          {/* <ScrollView contentContainerStyle={styles.container}> */}
+          <ScrollView >
           <View style={styles.actualFormContainerWithSpacing}>
             <TextInput
               placeholder="Name"
@@ -188,7 +193,7 @@ console.log(menuItem);
             ></TextInput>
             <TextInput
               placeholder="Price"
-              value={price}
+              value={price.toString()}
               style={styles.textInput}
               onChangeText={(price) => SetPrice(price)}
             ></TextInput>
@@ -223,8 +228,9 @@ console.log(menuItem);
                                 <Picker.Item label="iPhone" value="iPhone"></Picker.Item>
                                 <Picker.Item label="oppo" value="oppo"></Picker.Item>
                             </Picker> */}
+                   <>         
             <Picker
-              style={styles.textInput}
+              style={[styles.textInput,{height:(Platform.OS==="ios"?180:40),justifyContent:"center"}]}
               selectedValue={categoryId}
               onValueChange={(id) => {
              const findCategory = categoryData.find(category=>category._id===id);
@@ -232,10 +238,7 @@ console.log(menuItem);
              if(findCategory){
               setCategoryName(findCategory.name);
               setCategoryId(id);
-             }
-
-                
-               
+             }  
               }}
             >
               {/* <Picker.Item label="Select a category" value=""/> */}
@@ -247,6 +250,7 @@ console.log(menuItem);
                 ></Picker.Item>
               ))}
             </Picker>
+            </>
             <TouchableOpacity style={styles.loginButton} onPress={editMenuItem}>
               <Text style={styles.loginButtonText}>Update menu item</Text>
             </TouchableOpacity>
@@ -254,8 +258,9 @@ console.log(menuItem);
               <Text style={[styles.blueMessage,{color:(message.includes("Please")?"red":Colours.BeanLightBlue)}]}>{message}</Text>
             </View>
           </View>
+          </ScrollView>
         </View>
-      </ScrollView>
+      
     </SafeAreaView>
   );
 }

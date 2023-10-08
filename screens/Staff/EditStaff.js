@@ -20,13 +20,15 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
-  Picker,
 } from "react-native";
+
+import { Picker } from "@react-native-picker/picker";
 
 import Header from "../../layout/Header";
 import styles from "../../styles/MainStyle";
 import { useIsFocused } from "@react-navigation/native";
 import Colours from "../../constants/Colours";
+import Url from "../../constants/Url";
 Colours;
 
 export default function EditStaff({ route, navigation }) {
@@ -116,7 +118,7 @@ export default function EditStaff({ route, navigation }) {
 
     //         }
 
-    var url = "https://localhost:7044/staff";
+    var url = `${Url.url}/staff`;
     var header = new Headers({});
     header.append("Content-Type", "application/json");
     var options = {
@@ -198,7 +200,7 @@ export default function EditStaff({ route, navigation }) {
                                 <Picker.Item label="oppo" value="oppo"></Picker.Item>
                             </Picker> */}
             <Picker
-              style={styles.textInput}
+              style={[styles.textInput,{height:(Platform.OS==="ios"?120:40),justifyContent:"center"}]}
               onValueChange={(role) => setRole(role)}
               selectedValue={role}
             >

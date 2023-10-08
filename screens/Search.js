@@ -30,6 +30,7 @@ import Colours from "../constants/Colours";
 import Header from "../layout/Header";
 
 import styles from "../styles/MainStyle";
+import Url from "../constants/Url";
 
 export default function Search({ navigation }) {
   const [menuData, setMenuData] = useState([]);
@@ -52,7 +53,7 @@ export default function Search({ navigation }) {
   const deleteConfirmed = async () => {
     console.log("delete button is clicked");
 
-    var url = `https://localhost:7044/MenuItems/${selectedItem._id}`;
+    var url = `${Url.url}/MenuItems/${selectedItem._id}`;
     var header = new Headers({});
     header.append("Content-Type", "application/json");
 
@@ -63,7 +64,7 @@ export default function Search({ navigation }) {
     };
     try {
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       if (response.ok) {
         hideDeleteModal();
         searchMenu(input);
@@ -80,7 +81,7 @@ export default function Search({ navigation }) {
     }
     console.log("searchProduct method is called" + text);
 
-    var url = "https://localhost:7044/MenuItems/" + text;
+    var url = `${Url.url}/MenuItems/` + text;
     var header = new Headers({});
 
     var options = {
@@ -89,9 +90,9 @@ export default function Search({ navigation }) {
     };
     try {
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setMenuData(data);
     } catch (error) {
       console.log("Error:" + error.message);
@@ -99,7 +100,7 @@ export default function Search({ navigation }) {
   };
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <ScrollView contentContainerStyle={styles.container}>
+      {/* <ScrollView contentContainerStyle={styles.container}> */}
         <View style={styles.container}>
           <Header></Header>
           <View style={styles.alignCenterSearch}>
@@ -126,7 +127,8 @@ export default function Search({ navigation }) {
                 <View style={styles.rowHorizotal}>
                   <TouchableOpacity
                     onPress={() => {
-                      navigation.navigate("EditMenu", { item });
+                      // navigation.navigate("EditMenu", { item });
+                      navigation.navigate("Central",{screen:"EditMenu",params:{item}})
                       setInput("");
                       setMenuData([]);
                     }}
@@ -176,7 +178,7 @@ export default function Search({ navigation }) {
             </View>
           </Modal>
         </View>
-      </ScrollView>
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 }

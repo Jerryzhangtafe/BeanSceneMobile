@@ -14,11 +14,12 @@
 // }
 
 import React, { useEffect, useState } from "react";
-import { View, Text, SafeAreaView, ScrollView, TouchableOpacity, TextInput, Picker } from "react-native";
-
+import { View, Text, SafeAreaView, ScrollView, TouchableOpacity, TextInput} from "react-native";
+import { Picker } from "@react-native-picker/picker";
 import Header from "../../layout/Header";
 import styles from "../../styles/MainStyle";
 import Colours from "../../constants/Colours";
+import Url from "../../constants/Url";
 // import { useIsFocused } from "@react-navigation/native";
 
 export default function AddStaff({ props, navigation }) {
@@ -82,7 +83,7 @@ var staff ={
     phone:phone,
 }
 
-        var url = 'https://localhost:7044/staff';
+        var url = `${Url.url}/staff`;
         var header = new Headers({});
         header.append("Content-Type","application/json")
         var options = {
@@ -132,14 +133,14 @@ setMessages("Staff Added Successfully");}else{
                                 <Picker.Item label="iPhone" value="iPhone"></Picker.Item>
                                 <Picker.Item label="oppo" value="oppo"></Picker.Item>
                             </Picker> */}
-                            <Picker style={styles.textInput} onValueChange={(role)=>setRole(role)}>
+                            <Picker style={[styles.textInput,{height:(Platform.OS==="ios"?120:40),justifyContent:"center"}]} onValueChange={(role)=>setRole(role)}>
                                 {/* <Picker.Item label="Select a category" value=""/> */}
                                 {roleData?.map((item, key) => (
                                     <Picker.Item label={item} value={item} key={key}></Picker.Item>
                                 ))}
                             </Picker>
                             <TouchableOpacity style={styles.loginButton} onPress={addStaff}>
-                                <Text style={styles.orangeButtonText}>Add Staff</Text>
+                                <Text style={styles.loginButtonText}>Add Staff</Text>
                             </TouchableOpacity>
                             <View style={styles.alignCenter}>
                             <Text style={[styles.blueMessage,{color:(message.includes("Please")?"red":Colours.BeanLightBlue)}]}>{message}</Text>

@@ -31,6 +31,7 @@ import Colours from "../../constants/Colours";
 
 import styles from "../../styles/MainStyle";
 import { useIsFocused } from "@react-navigation/native";
+import Url from "../../constants/Url";
 
 
 export default function EditCategory({ navigation }) {
@@ -126,7 +127,7 @@ const isFocused=useIsFocused();
     
     };
 console.log(category);
-    var url = "https://localhost:7044/categories";
+    var url = `${Url.url}/categories`;
     var header = new Headers({});
     header.append("Content-Type", "application/json");
     var options = {
@@ -140,9 +141,9 @@ console.log(category);
            return;
       }
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       setSelectedCategory(null);
-      setNameEdit("");
+      setNameEdit(null);
       setMessages("Category Edited Successfully");
       getCategories();
     } catch (error) {
@@ -153,7 +154,7 @@ console.log(category);
   const deleteConfirmed = async () => {
     console.log("delete button is clicked");
 
-    var url = `https://localhost:7044/Categories/${selectedCategory._id}`;
+    var url = `${Url.url}/Categories/${selectedCategory._id}`;
     var header = new Headers({});
     header.append("Content-Type", "application/json");
 
@@ -165,8 +166,8 @@ console.log(category);
     try {
       const response = await fetch(url, options);
       const message = await response.json();
-      console.log(response);
-      console.log(message);
+      // console.log(response);
+      // console.log(message);
       if (response.ok) {
         hideDeleteModal();
         getCategories();
@@ -185,7 +186,7 @@ console.log(category);
   const getCategories = async () => {
     console.log("getCategories method is called");
 
-    var url = "https://localhost:7044/Categories";
+    var url = `${Url.url}/Categories`;
     var header = new Headers({});
     var options = {
       method: "GET",
@@ -193,10 +194,10 @@ console.log(category);
     };
     try {
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       //I added await
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setCategoryData(data);
       // console.log(data[0]);
       // setCategory(data[0].name);
@@ -212,7 +213,7 @@ console.log(category);
       name: name,
     };
 
-    var url = "https://localhost:7044/Categories";
+    var url = `${Url.url}/Categories`;
     var header = new Headers({});
     header.append("Content-Type", "application/json");
     var options = {
@@ -236,7 +237,7 @@ console.log(category);
         return;
       }
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       setName("");
       //I added await
 
@@ -249,7 +250,7 @@ console.log(category);
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <ScrollView contentContainerStyle={styles.container}>
+      {/* <ScrollView contentContainerStyle={styles.container}> */}
         <View>
           <Header />
           {/* <CategoryBar navigation={navigation} categorySelected={categorySelected} setCategorySelected={setCategorySelected} /> */}
@@ -357,7 +358,7 @@ console.log(category);
             </View>
           </Modal>
         </View>
-      </ScrollView>
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 }

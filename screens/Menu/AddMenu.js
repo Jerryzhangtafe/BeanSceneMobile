@@ -20,15 +20,16 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
-  Picker,
 } from "react-native";
 
 import CheckBox from "expo-checkbox";
+import { Picker } from "@react-native-picker/picker";
 
 import Header from "../../layout/Header";
 import styles from "../../styles/MainStyle";
 import { useIsFocused } from "@react-navigation/native";
 import Colours from "../../constants/Colours";
+import Url from "../../constants/Url";
 
 export default function AddMenu({ props, navigation }) {
   const [categoryData, setCategoryData] = useState([]);
@@ -64,7 +65,7 @@ export default function AddMenu({ props, navigation }) {
   const getCategories = async () => {
     console.log("getCategories method is called");
 
-    var url = "https://localhost:7044/categories";
+    var url = `${Url.url}/categories`;
     var header = new Headers({});
     var options = {
       method: "GET",
@@ -86,7 +87,7 @@ export default function AddMenu({ props, navigation }) {
   };
 
   const getMenu = async () => {
-    var url = "https://localhost:7044/MenuItems";
+    var url = `${Url.url}/MenuItems`;
     var header = new Headers({});
     var options = {
       method: "GET",
@@ -124,7 +125,7 @@ export default function AddMenu({ props, navigation }) {
   
     };
 console.log(menuItem);
-    var url = "https://localhost:7044/menuitems";
+    var url = `${Url.url}/menuitems`;
     var header = new Headers({});
     header.append("Content-Type", "application/json");
     var options = {
@@ -153,7 +154,8 @@ console.log(menuItem);
   };
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <ScrollView contentContainerStyle={styles.container}>
+      {/* <ScrollView contentContainerStyle={styles.container}> */}
+      <ScrollView>
         <View style={styles.container}>
           <Header></Header>
           <View style={styles.pageTitleContainer}>
@@ -212,7 +214,7 @@ console.log(menuItem);
                                 <Picker.Item label="oppo" value="oppo"></Picker.Item>
                             </Picker> */}
             <Picker
-              style={styles.textInput}
+              style={[styles.textInput,{height:(Platform.OS==="ios"?180:40),justifyContent:"center"}]}
               onValueChange={(id) => {
              const findCategory = categoryData.find(category=>category._id===id);
 

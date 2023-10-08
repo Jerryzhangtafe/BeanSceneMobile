@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "BeanSceneMobile",
-    "slug": "BeanSceneMobile",
+    "slug": "beanscenemobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,7 +28,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "ff9ee4d8-9ea6-4f35-a1e8-b80dc3c8bf8d"
+        "projectId": "e4c77f11-c7de-4160-bccf-f318f65217a5"
       }
     },
     "owner": "zhanglijinze"
