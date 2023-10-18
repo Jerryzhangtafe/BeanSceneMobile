@@ -20,6 +20,7 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
+  Platform
 } from "react-native";
 
 import CheckBox from "expo-checkbox";
@@ -33,11 +34,12 @@ import Url from "../../constants/Url";
 
 export default function AddMenu({ props, navigation }) {
   const [categoryData, setCategoryData] = useState([]);
-  const [name, SetName] = useState("");
+  const [name, setName] = useState("");
   const [description, SetDescription] = useState("");
   const [price, SetPrice] = useState("");
   const [photo, SetPhoto] = useState("");
-  const [availability, SetAvailability] = useState(false);
+  const [availability, setAvailability] = useState(false);
+  const [special,setSpecial] = useState(false);
   const [categoryId, setCategoryId] = useState("");
   const [categoryName, setCategoryName] = useState("");
   const [message, setMessages] = useState("");
@@ -119,6 +121,7 @@ export default function AddMenu({ props, navigation }) {
       price: price,
       photo: photo,
       availability: availability,
+      special: special,
       dietaryFlags: dietaryFlags,
       categoryId: categoryId,
       categoryName: categoryName,
@@ -171,7 +174,7 @@ console.log(menuItem);
             <TextInput
               placeholder="Name"
               style={styles.textInput}
-              onChangeText={(name) => SetName(name)}
+              onChangeText={(name) => setName(name)}
             ></TextInput>
             <TextInput
               placeholder="Description"
@@ -189,8 +192,14 @@ console.log(menuItem);
               onChangeText={(availability) => SetAvailability(availability)}
             ></TextInput> */}
             <View style={styles.dietaryContainer}>
+              <View style={styles.dietaryBox}>
             <Text>Availability</Text>
-            <CheckBox value={availability} onValueChange={()=>SetAvailability(!availability)}></CheckBox>
+            <CheckBox value={availability} onValueChange={()=>setAvailability(!availability)}></CheckBox>
+            </View>
+            <View style={styles.dietaryBox}>
+            <Text>Special</Text>
+            <CheckBox value={special} onValueChange={()=>setSpecial(!special)}></CheckBox>
+            </View>
             </View>
             <TextInput
               placeholder="photo name"
@@ -200,9 +209,10 @@ console.log(menuItem);
             <View style={styles.dietaryContainer}>
               {Object.keys(dietaryFlags).map((item) => { return(
                 <View key={item} style={styles.dietaryBox}>
+                <Text>{item}</Text>
                 <CheckBox value={dietaryFlags[item]} style={styles.checkBox}
                     onValueChange={() => toggleDietaryFlag(item)}></CheckBox>
-                  <Text>{item}</Text>
+                  
                 </View>);
               })}
 

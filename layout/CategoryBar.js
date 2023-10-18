@@ -11,8 +11,11 @@ export default function CategoryBar({
   categorySelected,
   navigation,
   managerView,
+  specialSelected,
+  setSpecialSelected,
 }) {
   const [categoryData, setCategoryData] = useState([]);
+  
 
   const isFocused = useIsFocused();
 
@@ -53,16 +56,25 @@ export default function CategoryBar({
               styles.categoryTab,
               {
                 backgroundColor:
-                  categorySelected === ""
+                  (categorySelected === ""&specialSelected==false)
                     ? Colours.BeanGold
                     : Colours.BeanLightGrey,
               },
             ]}
-            onPress={() => setCategorySelected("")}
+            onPress={() => {setCategorySelected("");setSpecialSelected(false)}}
           >
             <Text style={styles.darkText}>All</Text>
           </TouchableOpacity>
-
+          <TouchableOpacity style={[
+              styles.categoryTab,
+              {
+                backgroundColor:
+                  specialSelected? Colours.BeanGold: Colours.BeanLightGrey,
+              },
+            ]}
+            onPress={() => {setSpecialSelected(true);setCategorySelected("")}}>
+            <Text style={styles.darkText}>Sale🔥</Text>
+          </TouchableOpacity>
           {categoryData.map((category, key) => {
             return (
               <TouchableOpacity
@@ -78,6 +90,7 @@ export default function CategoryBar({
                 key={key}
                 onPress={() => {
                   setCategorySelected(category._id);
+                  setSpecialSelected(false);
                   console.log(category._id);
                 }}
               >
@@ -85,6 +98,7 @@ export default function CategoryBar({
               </TouchableOpacity>
             );
           })}
+         
           {managerView ? (
             <>
               <TouchableOpacity

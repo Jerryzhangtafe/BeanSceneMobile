@@ -25,27 +25,23 @@ const RenderMenuItems = ({ menuItem, orderDetails, setOrderDetails,index}
             setOrderDetails([...orderDetails, { ...orderedItem, quantity: 1 }])
         }
 
-        console.log(orderDetails);
+       
     }
-
-
     const reduceQuantity = (orderedItem) => {
         console.log("add button is clicked");
 
         const checkIfItemAlreadyExist = orderDetails.find((menuItem) => menuItem._id == orderedItem._id)
+        console.log(checkIfItemAlreadyExist); 
         //if product does not exist in the order details, increase the quantity of that product by 1 
         if (checkIfItemAlreadyExist) {
-            console.log("if addQuantity");
+            console.log("if reduce Quantity");
             if (checkIfItemAlreadyExist.quantity > 0) {
                 checkIfItemAlreadyExist.quantity -= 1;
-                setOrderDetails([...orderDetails]);
-            }
-        }
-
-        console.log(orderDetails);
+                // setOrderDetails([...orderDetails]);
+                setOrderDetails((orderDetails)=>orderDetails.filter(item=>item.quantity > 0));
+            } 
+        }    
     }
-
-
 
     const getItemQuantity = (ItemId) => {
         const result = orderDetails.find((menuItem) => menuItem._id === ItemId);
@@ -58,21 +54,23 @@ const RenderMenuItems = ({ menuItem, orderDetails, setOrderDetails,index}
     return (
         <View style={[styles.orderListRow, styles.rowHorizotal,{backgroundColor:(index%2===0)?"white":Colours.BeanLightGrey}]}>
             <View style={styles.orderListLeftColumn}>
-                <Text style={styles.fontBold}>{menuItem.name}</Text>
+                <Text style={styles.fontBold}>{menuItem.special?"🔥":""}{menuItem.name}</Text>
                 <Text >{menuItem.description}</Text>
                 <Text style={styles.fontBoldSmall}>{menuItem.price}</Text>
             </View>
 
             <View style={styles.orderListRightColumn}>
-                <View style={styles.rowHorizotal}>
-                    <TouchableOpacity style={styles.minusContainer} onPress={()=>reduceQuantity(menuItem)}>
+                {menuItem.availability?(<View style={styles.rowHorizotal}>
+                    <TouchableOpacity style={styles.minusContainer} onPress={()=>{reduceQuantity(menuItem);}}>
                         <Entypo name="minus" size={23} color="#fff"></Entypo>
                     </TouchableOpacity>
                     <Text style={styles.itemQuantity}>{getItemQuantity(menuItem._id)}</Text>
                     <TouchableOpacity style={styles.minusContainer} onPress={() => addQuantity(menuItem)}>
                         <MaterialIcons name="add" size={25} color="#fff"></MaterialIcons>
                     </TouchableOpacity>
-                </View>
+                </View>):(<View>
+                    <Entypo name="circle-with-cross"size={28} color="red"></Entypo>
+                </View>)}
 
             </View>
         </View>

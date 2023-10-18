@@ -63,7 +63,7 @@ loginButton: {
     fontSize: 20
 },
 loginButtonText: {
-    color: Colours.BeanLightGrey,
+    color: Colours.White,
     fontSize: 18,
     paddingBottom: 5
 },
@@ -163,7 +163,7 @@ itemListContainer: {
   justifyContent: "space-between",
   borderBottomWidth: 1,
   borderBottomColor: Colours.BeanDarkBlue,
-  flexWrap:"wrap",
+  // flexWrap:"wrap",
 
 
 },
@@ -175,7 +175,7 @@ itemListContainerGrey: {
   borderBottomWidth: 1,
   borderBottomColor: Colours.BeanDarkBlue,
   backgroundColor:Colours.BeanLightGrey,
-  flexWrap:"wrap",
+  // flexWrap:"wrap",
 },
 
 rowHorizotal: {
@@ -309,6 +309,45 @@ orderListRightColumn:{
 flex:1,
 alignItems:"center",
 justifyContent:"center", 
-}
+},
+contentContainer:{
+  flex:1,
+  alignItems:"center",
+  justifyContent:"center",
+  padding:16
+  },
+  darkTextLarge:{
+      color:Colours.BeanDarkBlue,
+      fontSize:24
+  },
+  cartContainerList:{
+      flexDirection:"row",
+      paddingTop:10,
+      paddingBottom:10,
+      borderBottomColor:Colours.BeanDarkBlue,
+      borderBottomWidth:1,
+      justifyContent:"space-between",
+      width:wp("80%")
+  },
+  textInputMultiLine:{
+  borderRadius:4,
+  marginTop:15,
+  backgroundColor:"white",
+  width:wp("80%"),
+  marginBottom:15,
+  paddingLeft:5
+  },
+  orangeButtonShort:{
+      backgroundColor:"#e74c3c",
+      height:40,
+      borderRadius:4,
+      width:wp("40%"),
+      alignItems:"center",
+      justifyContent:"center",
+      fontSize:20
+  },
+  height10:{
+      margin:10
+  }
   });
   

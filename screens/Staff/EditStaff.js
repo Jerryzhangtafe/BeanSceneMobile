@@ -20,6 +20,7 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
+  Platform
 } from "react-native";
 
 import { Picker } from "@react-native-picker/picker";

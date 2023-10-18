@@ -44,6 +44,7 @@ const menuItem = route.params.item;
   const [price, SetPrice] = useState(menuItem.price);
   const [photo, SetPhoto] = useState(menuItem.photo);
   const [availability, SetAvailability] = useState(menuItem.availability);
+  const [special,setSpecial] = useState(menuItem.special);
   const [categoryId, setCategoryId] = useState(menuItem.categoryId);
   const [categoryName, setCategoryName] = useState(menuItem.categoryName);
   const [message, setMessages] = useState("");
@@ -127,6 +128,7 @@ const menuItem = route.params.item;
       price: price,
       photo: photo,
       availability: availability,
+      special:special,
       dietaryFlags: dietaryFlags,
       categoryId: categoryId,
       categoryName: categoryName,
@@ -203,8 +205,14 @@ console.log(menuItem);
               onChangeText={(availability) => SetAvailability(availability)}
             ></TextInput> */}
             <View style={styles.dietaryContainer}>
+              <View style={styles.dietaryBox}>
             <Text>Availability</Text>
             <CheckBox value={availability} onValueChange={()=>SetAvailability(!availability)}></CheckBox>
+            </View>
+            <View style={styles.dietaryBox}>
+            <Text>Special</Text>
+            <CheckBox value={special} onValueChange={()=>setSpecial(!special)}></CheckBox>
+            </View>
             </View>
             <TextInput
               placeholder="photo name"
@@ -215,9 +223,10 @@ console.log(menuItem);
             <View style={styles.dietaryContainer}>
               {Object.keys(dietaryFlags).map((item) => { return(
                 <View key={item} style={styles.dietaryBox}>
+                  <Text>{item}</Text>
                 <CheckBox value={dietaryFlags[item]} style={styles.checkBox}
                     onValueChange={() => toggleDietaryFlag(item)}></CheckBox>
-                  <Text>{item}</Text>
+                  
                 </View>);
               })}
 
