@@ -23,7 +23,7 @@ export default function Header({}) {
 
   const loadDetails = async () => {
     const details = await AsyncStorage.getItem("loginDetails");
-    console.log(details);
+    // console.log(details);
     var jsonDetails = JSON.parse(details);
     setName(jsonDetails.firstName + " " + jsonDetails.lastName);
     setRole(jsonDetails.role);

@@ -301,6 +301,7 @@ itemQuantity:{
 
 orderListLeftColumn:{
   // width:wp("65%"),
+
   flex:3
 },
 
@@ -348,6 +349,34 @@ contentContainer:{
   },
   height10:{
       margin:10
-  }
+  },
+  labelContainer:{
+    flexDirection:"row",
+    // justifyContent:"space-between",
+    padding:20,
+    borderBottomWidth:1,
+    borderBottomColor:Colours.BeanDarkBlue,
+    alignItems:"center"
+},
+flex1:{
+flex:1
+},
+labelItem:{
+fontWeight:"bold",
+fontSize:18
+},
+labelItemSmall:{
+    fontSize:16,
+    fontWeight:"bold",
+    color:Colours.BeanDarkBlue
+},
+dropDownContainer:{
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"flex-end"
+},
+width30:{
+    width:wp("30%"),
+}
   });
   

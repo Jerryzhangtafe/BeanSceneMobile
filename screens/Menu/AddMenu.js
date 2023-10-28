@@ -177,8 +177,10 @@ console.log(menuItem);
               onChangeText={(name) => setName(name)}
             ></TextInput>
             <TextInput
+            multiline
+            numberOfLines={4}
               placeholder="Description"
-              style={styles.textInput}
+              style={styles.textInputMultiLine}
               onChangeText={(description) => SetDescription(description)}
             ></TextInput>
             <TextInput

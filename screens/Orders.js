@@ -31,7 +31,7 @@ import RenderMenuItems from "../layout/RenderMenuItems";
 import CategoryBar from "../layout/CategoryBar";
 import MessageModal from "../components/MessageModal";
 
-export default function Orders({ props, navigation }) {
+export default function Orders({ props, navigation,route}) {
   const [categorySelected, setCategorySelected] = useState("");
   const [specialSelected, setSpecialSelected] = useState(false);
   const [selected, setSelected] = useState("Sequence");
@@ -40,11 +40,19 @@ export default function Orders({ props, navigation }) {
   const [orderDetails, setOrderDetails] = useState([]);
   const [modalVisibility, setModalVisibility] = useState(false);
 
+const reset= route.params?.clear;
+// console.log(checkEmpty);
   const isFocused = useIsFocused();
-
+ 
   console.log(orderDetails)
 
   useEffect(() => {
+console.log(orderDetails)
+setOrderDetails([...orderDetails.filter(item=>item.quantity > 0)]);
+if(reset){
+  setOrderDetails([])
+  navigation.setParams({ clear: null });
+}
     if (isFocused) {
       getMenu();
     }
