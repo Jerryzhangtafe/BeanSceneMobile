@@ -107,7 +107,7 @@ export default function MenuList({ props, navigation }) {
   }
 
   const showDeleteModal = (item) => {
-    console.log(item);
+    // console.log(item);
     setSelectedItem(item);
     setModalVisibility(true);
   };
@@ -118,7 +118,7 @@ export default function MenuList({ props, navigation }) {
   };
 
   const deleteConfirmed = async () => {
-    console.log("delete button is clicked");
+    // console.log("delete button is clicked");
 
     var url = `${Url.url}/MenuItems/${selectedItem._id}`;
     var header = new Headers({});
@@ -131,7 +131,7 @@ export default function MenuList({ props, navigation }) {
     };
     try {
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       if (response.ok) {
         hideDeleteModal();
         getMenu();

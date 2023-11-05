@@ -6,7 +6,7 @@ import styles from "../styles/MainStyle"
 import { Entypo, MaterialIcons } from "@expo/vector-icons"
 import Colours from "../constants/Colours";
 
-const RenderMenuItems = ({ menuItem, orderDetails, setOrderDetails,index}
+const RenderMenuItems = ({ menuItem, orderDetails, setOrderDetails,index,navigation}
 
 ) => {
 
@@ -54,7 +54,9 @@ const RenderMenuItems = ({ menuItem, orderDetails, setOrderDetails,index}
     return (
         <View style={[styles.orderListRow, styles.rowHorizotal,{backgroundColor:(index%2===0)?"white":Colours.BeanLightGrey}]}>
             <View style={styles.orderListLeftColumn}>
-                <Text style={styles.fontBold}>{menuItem.special?"🔥":""}{menuItem.name}</Text>
+                <Text style={styles.fontBold}>{menuItem.special?"🔥":""}{menuItem.name}
+                <TouchableOpacity onPress={()=>navigation.navigate("Central",{screen:"ItemDetails",params:{menuItem}})}><Text>📖</Text></TouchableOpacity>
+                </Text>
                 <Text >{menuItem.description}</Text>
                 <Text style={styles.fontBoldSmall}>{menuItem.price}</Text>
             </View>

@@ -6,7 +6,7 @@ import Colours from "../constants/Colours";
 import Styles from "../styles/MainStyle"
 
 
-import MenuListStaff from "../screens/TakeOrder/MenuListStaff";
+
 import SearchNavigator from "./SearchNavigator";
 import OrderNavigator from "./OrderNavigator";
 import MenuNavigatorStaff from "./MenuNavigatorStaff";

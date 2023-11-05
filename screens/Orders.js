@@ -44,10 +44,10 @@ const reset= route.params?.clear;
 // console.log(checkEmpty);
   const isFocused = useIsFocused();
  
-  console.log(orderDetails)
+  // console.log(orderDetails)
 
   useEffect(() => {
-console.log(orderDetails)
+// console.log(orderDetails)
 setOrderDetails([...orderDetails.filter(item=>item.quantity > 0)]);
 if(reset){
   setOrderDetails([])
@@ -67,10 +67,10 @@ if(reset){
     };
     try {
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       //I added await
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setMenuData(data);
     } catch (error) {
       console.log("Error:" + error.message);
@@ -139,6 +139,7 @@ if(reset){
                     orderDetails={orderDetails}
                     setOrderDetails={setOrderDetails}
                     index={index}
+                    navigation={navigation}
                   ></RenderMenuItems>
                 </View>
               );

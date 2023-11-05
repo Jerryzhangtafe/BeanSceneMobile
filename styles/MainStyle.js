@@ -53,6 +53,14 @@ export default StyleSheet.create({
     marginBottom: 15,
     paddingLeft: 5
 },
+textInputSmall: {
+    height: 40,
+    borderRadius: 4,
+    backgroundColor: "white",
+    width: 150,
+
+
+},
 loginButton: {
     backgroundColor: Colours.BeanLightBlue,
     height: 40,
@@ -80,7 +88,7 @@ errorText: {
   color: "red",
   fontSize: 20,
   marginTop: 10,
-  fontWeight: "400"
+  fontWeight: "bold",
 },
  // Header layout styles
  headerContainer: {
@@ -88,7 +96,9 @@ errorText: {
   paddingHorizontal: 7,
   paddingVertical:5,
   backgroundColor: Colours.BeanLightBlue,
-  justifyContent: "space-between"
+  justifyContent: "space-between",
+  borderBottorm: "5px solid",
+  borderBottomColor: Colours.BeanDarkBlue
 },
 //Category layout styles
 categoryContainer: {
@@ -104,7 +114,7 @@ dietaryContainer: {
 flexDirection: "row",
 alignItems: "center",
 gap: 20,
-marginBottom: 10,
+marginBottom: 5,
 },
 dietaryBox:{
   flexDirection: "row",
@@ -136,7 +146,7 @@ navBarIcon:{
 darkText: {
   color: Colours.BeanDarkBlue,
   fontSize: 14,
-  fontWeight: "500"
+  fontWeight: "bold",
 },
 
 goldContainer: {
@@ -244,12 +254,12 @@ BeanLightBlueBackground: {
 headerStyleText: {
   color: "white",
   paddingRight: 15,
-  fontWeight: 500,
+  fontWeight: "bold",
   fontSize: 20
 },
 tabBarLabelStyle: {
   fontSize: 18,
-  fontWeight: 500
+  fontWeight: "bold",
 },
 SearchResult:{
   flexDirection:"row",
@@ -377,6 +387,37 @@ dropDownContainer:{
 },
 width30:{
     width:wp("30%"),
+},
+whiteContainer:{
+  backgroundColor:'white'
+},
+
+headerStyleTextBlack:{
+  color:'black',
+  paddingRight:15,
+  fontWeight:"bold",
+  fontSize:20
+},
+chartLabel:{
+  fontSize: 13,
+  fontWeight:"bold:"
+},
+orangeText:{
+  color:'#e74c3c',
+  marginRight:2
+},
+height20:{
+  marginBottom:20
+},
+padding10:{
+  padding:10
+},
+padding20:{
+  padding:20
+},
+marginBottom10:{
+  marginBottom:10,
+  fontWeight:'bold'
 }
   });
   

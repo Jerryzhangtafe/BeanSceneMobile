@@ -46,7 +46,7 @@ export default function Checkout({ route, navigation }) {
   // useEffect(() =>{ orderDetails.length === 0&&navigation.navigate("TakeOrder")},[orderDetails])
   useEffect(() => {
     if (orderDetails.length === 0) {
-      console.log(orderDetails);
+      // console.log(orderDetails);
       navigation.navigate("TakeOrder");
     }
   }, [orderDetails]);
@@ -54,14 +54,14 @@ export default function Checkout({ route, navigation }) {
   useEffect(() => {
     // const formattedDataTime = new Date().toLocaleDateString("en-US", options);
     const formattedDataTime = new Date();
-    console.log(formattedDataTime);
+    // console.log(formattedDataTime);
     setCurrentDateTime(formattedDataTime);
     getArea();
   }, []);
 
   
   const addQuantity = (orderedItem) => {
-    console.log("add button is clicked");
+    // console.log("add button is clicked");
 
     const checkIfItemAlreadyExist = orderDetails.find(
       (product) => product._id == orderedItem._id
@@ -77,7 +77,7 @@ export default function Checkout({ route, navigation }) {
   };
 
   const reduceQuantity = (orderedItem) => {
-    console.log("reduce button is clicked");
+    // console.log("reduce button is clicked");
 
     const checkIfItemAlreadyExist = orderDetails.find(
       (menuItem) => menuItem._id == orderedItem._id
@@ -85,7 +85,7 @@ export default function Checkout({ route, navigation }) {
 
     //if product exist in the order details, reduce the quantity of that product by 1
     if (checkIfItemAlreadyExist) {
-      console.log("if reduce Quantity");
+      // console.log("if reduce Quantity");
       if (checkIfItemAlreadyExist.quantity > 0) {
         checkIfItemAlreadyExist.quantity -= 1;
         // setOrderDetails([...orderDetails]);
@@ -104,7 +104,7 @@ export default function Checkout({ route, navigation }) {
 
 
   const addToOrder = async () => {
-    console.log("add order when method is clicked");
+    // console.log("add order when method is clicked");
 
     var order = {
       name: name,
@@ -132,8 +132,8 @@ export default function Checkout({ route, navigation }) {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
-      console.log(data);
-      console.log("order added successfully");
+      // console.log(data);
+      // console.log("order added successfully");
      navigation.navigate("TakeOrder",{clear:true});
     } catch (error) {}
   };
@@ -147,14 +147,14 @@ export default function Checkout({ route, navigation }) {
     };
     try {
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       //I added await
       const data = await response.json();
       setAreaData(data);
       setArea(data[0].areaName);
       setTableData(data[0].tables);
       setTable(data[0].tables[0]);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log("Error:" + error.message);
     }
@@ -216,7 +216,7 @@ export default function Checkout({ route, navigation }) {
                       style={styles.minusContainer}
                       onPress={() => {
                         reduceQuantity(item);
-                        console.log(orderDetails);
+                        // console.log(orderDetails);
                       }}
                     >
                       <Entypo
@@ -241,9 +241,12 @@ export default function Checkout({ route, navigation }) {
                   </View>
                 </View>
               </View>
-              {selectNote===item._id&&<TextInput placeholder={`note for ${item.name}`} style={styles.textInput} value={item.note??""} onChangeText={(note)=>addNote(note,item)} ></TextInput>}
+              {selectNote===item._id&&<TextInput placeholder={`note for ${item.name} (optional)`} style={styles.textInput} value={item.note??""} onChangeText={(note)=>addNote(note,item)} ></TextInput>}
               </View>
             ))}
+            <View>
+              <Text>Note: continue shopping will reset below info</Text>
+            </View>
             <TextInput
               multiline
               placeholder="notes for the entire order (optional)"

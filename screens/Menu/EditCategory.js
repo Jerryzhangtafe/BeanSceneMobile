@@ -165,7 +165,7 @@ console.log(category);
     };
     try {
       const response = await fetch(url, options);
-      const message = await response.json();
+      // const message = await response.json();
       // console.log(response);
       // console.log(message);
       if (response.ok) {

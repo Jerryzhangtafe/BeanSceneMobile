@@ -14,7 +14,7 @@
 // }
 
 import React, { useEffect, useState } from "react";
-import { View, Text, SafeAreaView, ScrollView, TouchableOpacity, TextInput} from "react-native";
+import { View, Text, SafeAreaView, ScrollView, TouchableOpacity, TextInput,Platform} from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import Header from "../../layout/Header";
 import styles from "../../styles/MainStyle";
