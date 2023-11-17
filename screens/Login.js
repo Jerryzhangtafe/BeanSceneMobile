@@ -40,7 +40,7 @@ export default function Login({navigation}) {
             
             var url = `${Url.url}/Staff/${username}/${password}`;
            
-            var header = new Headers({});
+            var header = new Headers({ Authorization:"Basic "+btoa("test:test")});
             header.append("Content-Type", "application/json")
             var options = {
                 method: "Get",

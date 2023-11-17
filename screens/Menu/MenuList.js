@@ -48,6 +48,7 @@ export default function MenuList({ props, navigation }) {
 
   const isFocused = useIsFocused();
 
+  
   useEffect(() => {
     if (isFocused) {
       getMenu();

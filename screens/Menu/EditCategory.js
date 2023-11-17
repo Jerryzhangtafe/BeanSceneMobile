@@ -250,9 +250,10 @@ console.log(category);
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      {/* <ScrollView contentContainerStyle={styles.container}> */}
-        <View>
+      
+        
           <Header />
+        
           {/* <CategoryBar navigation={navigation} categorySelected={categorySelected} setCategorySelected={setCategorySelected} /> */}
           <View style={styles.pageTitleContainer}>
             <Text style={styles.titleText}>Category List</Text>
@@ -266,11 +267,9 @@ console.log(category);
               <Text style={styles.darkText}>Menu List</Text>
             </TouchableOpacity>
           </View>
-
-          <FlatList
-            data={categoryData}
-            renderItem={({ item, index }) => (
-              <View
+          <ScrollView >
+          {categoryData.map((item, index ) => (
+              <View key={index}
                 style={
                   index % 2 === 0
                     ? styles.itemListContainer
@@ -300,8 +299,8 @@ console.log(category);
                   </TouchableOpacity>
                 </View> */}
               </View>
-            )}
-          />
+            ))}
+          
 
           <View style={[styles.rowHorizotal, { marginTop: 10 }]}>
             <TextInput
@@ -357,8 +356,10 @@ console.log(category);
               </View>
             </View>
           </Modal>
-        </View>
-      {/* </ScrollView> */}
+          </ScrollView>
+   
+       
+      
     </SafeAreaView>
   );
 }

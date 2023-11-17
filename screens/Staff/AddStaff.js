@@ -84,7 +84,7 @@ var staff ={
 }
 
         var url = `${Url.url}/staff`;
-        var header = new Headers({});
+        var header = new Headers({ Authorization:"Basic "+btoa("test:test")});
         header.append("Content-Type","application/json")
         var options = {
             method: "POST",
@@ -112,7 +112,7 @@ setMessages("Staff Added Successfully");}else{
     }
         return (
             <SafeAreaView style={styles.safeAreaView}>
-                <ScrollView contentContainerStyle={styles.container}>
+            
                     <View style={styles.container}>
                         <Header></Header>
                         <View style={styles.pageTitleContainer}>
@@ -121,6 +121,7 @@ setMessages("Staff Added Successfully");}else{
                                 <Text style={styles.darkText}>Staff List</Text>
                             </TouchableOpacity>
                         </View>
+                        <ScrollView >
                         <View style={styles.actualFormContainerWithSpacing}>
                             <TextInput placeholder="Email" style={styles.textInput} onChangeText={(email)=>setEmail(email)}></TextInput>
                             <TextInput placeholder="firstname" style={styles.textInput} onChangeText={(firstname)=>setFirstname(firstname)}></TextInput>
@@ -133,7 +134,7 @@ setMessages("Staff Added Successfully");}else{
                                 <Picker.Item label="iPhone" value="iPhone"></Picker.Item>
                                 <Picker.Item label="oppo" value="oppo"></Picker.Item>
                             </Picker> */}
-                            <Picker style={[styles.textInput,{height:(Platform.OS==="ios"?120:40),justifyContent:"center"}]} onValueChange={(role)=>setRole(role)}>
+                            <Picker style={[styles.textInput,{height:(Platform.OS==="ios"?120:40),justifyContent:"center"},styles.picker]} onValueChange={(role)=>setRole(role)} selectedValue={role}>
                                 {/* <Picker.Item label="Select a category" value=""/> */}
                                 {roleData?.map((item, key) => (
                                     <Picker.Item label={item} value={item} key={key}></Picker.Item>
@@ -146,9 +147,9 @@ setMessages("Staff Added Successfully");}else{
                             <Text style={[styles.blueMessage,{color:(message.includes("Please")?"red":Colours.BeanLightBlue)}]}>{message}</Text>
                         </View>
                         </View>
-                       
+                        </ScrollView>
                     </View>
-                </ScrollView>
+                
             </SafeAreaView>
         )
     

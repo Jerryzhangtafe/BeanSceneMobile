@@ -22,6 +22,7 @@
     "expo-linking": "~5.0.2",
     "expo-screen-orientation": "~6.0.6",
     "expo-status-bar": "~1.6.0",
+    "font": "^0.0.4",
     "i": "^0.3.7",
     "moment": "^2.29.4",
     "npm": "^10.1.0",

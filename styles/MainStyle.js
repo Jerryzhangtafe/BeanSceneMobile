@@ -31,7 +31,8 @@ export default StyleSheet.create({
       resizeMode: 'contain'
   },
   logoTitle: {
-      fontSize: 28,
+    fontFamily: "Tangerine-regular",
+      fontSize: 35,
       color: Colours.BeanLightBlue,
       fontWeight: 'bold'
   },
@@ -341,6 +342,7 @@ contentContainer:{
       width:wp("80%")
   },
   textInputMultiLine:{
+    minHeight:120,
   borderRadius:4,
   marginTop:15,
   backgroundColor:"white",
@@ -418,6 +420,10 @@ padding20:{
 marginBottom10:{
   marginBottom:10,
   fontWeight:'bold'
+},
+picker:{
+marginTop:20
 }
   });
+
   

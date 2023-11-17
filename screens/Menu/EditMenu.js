@@ -188,7 +188,7 @@ console.log(menuItem);
               onChangeText={(name) => SetName(name)}
             ></TextInput>
             <TextInput
-              multiline
+              multiline={true} 
               numberOfLines={4}
               placeholder="Description"
               value={description}
@@ -241,7 +241,7 @@ console.log(menuItem);
                             </Picker> */}
                    <>         
             <Picker
-              style={[styles.textInput,{height:(Platform.OS==="ios"?180:40),justifyContent:"center"}]}
+              style={[styles.textInput,{height:(Platform.OS==="ios"?180:40),justifyContent:"center"},styles.picker]}
               selectedValue={categoryId}
               onValueChange={(id) => {
              const findCategory = categoryData.find(category=>category._id===id);

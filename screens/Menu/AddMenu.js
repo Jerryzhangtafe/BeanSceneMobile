@@ -75,12 +75,12 @@ export default function AddMenu({ props, navigation }) {
     };
     try {
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       //I added await
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setCategoryData(data);
-      console.log(data[0]);
+      // console.log(data[0]);
       setCategoryName(data[0].name);
       setCategoryId(data[0]._id);
     } catch (error) {
@@ -97,15 +97,15 @@ export default function AddMenu({ props, navigation }) {
     };
     try {
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       //I added await
       const data = await response.json();
       const dietaryNames = Object.keys(data[0].dietaryFlags).reduce((acc, key) => {
         acc[key] = false;
         return acc;
       }, {});
-      console.log(data);
-      console.log(dietaryNames);
+      // console.log(data);
+      // console.log(dietaryNames);
       setDietaryFlags(dietaryNames);
     } catch (error) {
       console.log("Error:" + error.message);
@@ -127,7 +127,7 @@ export default function AddMenu({ props, navigation }) {
       categoryName: categoryName,
   
     };
-console.log(menuItem);
+// console.log(menuItem);
     var url = `${Url.url}/menuitems`;
     var header = new Headers({});
     header.append("Content-Type", "application/json");
@@ -148,7 +148,7 @@ console.log(menuItem);
         return;
       } 
       const response = fetch(url, options);
-      console.log(response);
+      // console.log(response);
       
       setMessages("Menu Added Successfully");
     } catch (error) {
@@ -158,7 +158,7 @@ console.log(menuItem);
   return (
     <SafeAreaView style={styles.safeAreaView}>
       {/* <ScrollView contentContainerStyle={styles.container}> */}
-      <ScrollView>
+      
         <View style={styles.container}>
           <Header></Header>
           <View style={styles.pageTitleContainer}>
@@ -170,6 +170,8 @@ console.log(menuItem);
               <Text style={styles.darkText}>Menu List</Text>
             </TouchableOpacity>
           </View>
+
+          <ScrollView>
           <View style={styles.actualFormContainerWithSpacing}>
             <TextInput
               placeholder="Name"
@@ -177,7 +179,7 @@ console.log(menuItem);
               onChangeText={(name) => setName(name)}
             ></TextInput>
             <TextInput
-            multiline
+            multiline={true}
             numberOfLines={4}
               placeholder="Description"
               style={styles.textInputMultiLine}
@@ -226,7 +228,8 @@ console.log(menuItem);
                                 <Picker.Item label="oppo" value="oppo"></Picker.Item>
                             </Picker> */}
             <Picker
-              style={[styles.textInput,{height:(Platform.OS==="ios"?180:40),justifyContent:"center"}]}
+              style={[styles.textInput,{height:(Platform.OS==="ios"?180:40),justifyContent:"center"},styles.picker]}
+              selectedValue={categoryId}
               onValueChange={(id) => {
              const findCategory = categoryData.find(category=>category._id===id);
 
@@ -255,8 +258,8 @@ console.log(menuItem);
               <Text style={[styles.blueMessage,{color:(message.includes("Please")?"red":Colours.BeanLightBlue)}]}>{message}</Text>
             </View>
           </View>
+          </ScrollView>
         </View>
-      </ScrollView>
     </SafeAreaView>
   );
 }

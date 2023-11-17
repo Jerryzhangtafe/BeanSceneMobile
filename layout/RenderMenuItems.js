@@ -9,7 +9,10 @@ import Colours from "../constants/Colours";
 const RenderMenuItems = ({ menuItem, orderDetails, setOrderDetails,index,navigation}
 
 ) => {
-
+/**
+ * increase the quantity by 1 when clicking the plus button
+ * @param {object} orderedItem 
+ */
 
     const addQuantity = (orderedItem) => {
         console.log("add button is clicked");
@@ -25,8 +28,13 @@ const RenderMenuItems = ({ menuItem, orderDetails, setOrderDetails,index,navigat
             setOrderDetails([...orderDetails, { ...orderedItem, quantity: 1 }])
         }
 
-       
     }
+
+/**
+ * decrease the quantity by 1 when clicking the minus button
+ * @param {object} orderedItem 
+ */
+
     const reduceQuantity = (orderedItem) => {
         console.log("add button is clicked");
 
@@ -43,6 +51,12 @@ const RenderMenuItems = ({ menuItem, orderDetails, setOrderDetails,index,navigat
         }    
     }
 
+    /**
+     * 
+     * @param {string} ItemId 
+     * @returns integer
+     */
+    
     const getItemQuantity = (ItemId) => {
         const result = orderDetails.find((menuItem) => menuItem._id === ItemId);
         return result ? result.quantity : 0;

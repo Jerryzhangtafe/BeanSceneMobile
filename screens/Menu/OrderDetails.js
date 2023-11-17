@@ -61,6 +61,10 @@ export default function OrderDetails({ navigation, route, props }) {
                 <Text style={styles.marginBottom10}>Status: </Text>
                 <Text>{details.status}</Text>
               </View>
+              <View style={styles.modalButtons}>
+                <Text style={styles.marginBottom10}>Name: </Text>
+                <Text>{details.name}</Text>
+              </View>
             </View>
             <View style={styles.modalButtons}>
               <Text style={styles.marginBottom10}>Time: </Text>

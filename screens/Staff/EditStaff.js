@@ -120,7 +120,7 @@ export default function EditStaff({ route, navigation }) {
     //         }
 
     var url = `${Url.url}/staff`;
-    var header = new Headers({});
+    var header = new Headers({ Authorization:"Basic "+btoa("test:test")});
     header.append("Content-Type", "application/json");
     var options = {
       method: "PUT",
@@ -146,7 +146,7 @@ export default function EditStaff({ route, navigation }) {
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <ScrollView contentContainerStyle={styles.container}>
+      
         <View style={styles.container}>
           <Header></Header>
           <View style={styles.pageTitleContainer}>
@@ -158,6 +158,7 @@ export default function EditStaff({ route, navigation }) {
               <Text style={styles.orangeButtonText2}>Staff List</Text>
             </TouchableOpacity>
           </View>
+          <ScrollView >
           <View style={styles.actualFormContainerWithSpacing}>
             <TextInput
               placeholder="Email"
@@ -201,7 +202,7 @@ export default function EditStaff({ route, navigation }) {
                                 <Picker.Item label="oppo" value="oppo"></Picker.Item>
                             </Picker> */}
             <Picker
-              style={[styles.textInput,{height:(Platform.OS==="ios"?120:40),justifyContent:"center"}]}
+              style={[styles.textInput,{height:(Platform.OS==="ios"?120:40),justifyContent:"center"},styles.picker]}
               onValueChange={(role) => setRole(role)}
               selectedValue={role}
             >
@@ -228,8 +229,9 @@ export default function EditStaff({ route, navigation }) {
               </Text>
             </View>
           </View>
+          </ScrollView>
         </View>
-      </ScrollView>
+     
     </SafeAreaView>
   );
 }

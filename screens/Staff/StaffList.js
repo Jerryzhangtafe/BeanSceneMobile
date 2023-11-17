@@ -70,7 +70,7 @@ export default function StaffList({ props, navigation }) {
 
   const getStaff = async () => {
     var url = `${Url.url}/Staff`;
-    var header = new Headers({});
+    var header = new Headers({ Authorization:"Basic "+btoa("test:test")});
     var options = {
       method: "GET",
       headers: header,
@@ -102,7 +102,7 @@ export default function StaffList({ props, navigation }) {
     console.log("delete button is clicked");
 
     var url = `${Url.url}/staff/${selectedStaff._id}`;
-    var header = new Headers({});
+    var header = new Headers({ Authorization:"Basic "+btoa("test:test")});
     header.append("Content-Type", "application/json");
 
     var options = {

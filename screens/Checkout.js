@@ -182,7 +182,7 @@ export default function Checkout({ route, navigation }) {
       <View style={styles.container}>
         <Header></Header>
         <View style={styles.pageTitleContainer}>
-          <Text style={styles.titleText}>Order List</Text>
+          <Text style={styles.titleText}>Item List</Text>
           <TouchableOpacity
             style={styles.goldContainer}
             onPress={() => navigation.goBack()}
@@ -270,6 +270,7 @@ export default function Checkout({ route, navigation }) {
                   justifyContent: "center",
                 },
               ]}
+              selectedValue={area}
               onValueChange={(name) => {
                 const findArea = areaData.find(
                   (area) => area.areaName === name
@@ -299,7 +300,7 @@ export default function Checkout({ route, navigation }) {
                   justifyContent: "center",
                 },
               ]}
-              value={table}
+              selectedValue={table}
               onValueChange={(name) => {
                 const findTable = tableData.find((table) => table === name);
 
